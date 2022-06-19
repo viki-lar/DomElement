@@ -9,23 +9,22 @@ const DomElement = function (selector, height, width, bg, fontSize) {
   this.fontSize = fontSize;
 
   this.createElement = function () {
+    let newElement = "";
     if (this.selector[0] == ".") {
-      const newElement = document.createElement("div");
+      newElement = document.createElement("div");
       newElement.classList.add(this.selector);
-      newElement.style.cssText = `height: ${this.height}; width: ${this.width};background:${this.bg}; font-size:${this.fontSize}`;
       newElement.textContent = "Создан новый div";
-      body.append(newElement);
     }
     if (this.selector[0] == "#") {
-      const newElement = document.createElement("p");
+      newElement = document.createElement("p");
       newElement.setAttribute("id", this.selector);
-      newElement.style.cssText = `height: ${this.height}; width: ${this.width};background:${this.bg}; font-size:${this.fontSize}`;
       newElement.textContent = "Тут должен быть параграф";
-      body.append(newElement);
     }
+    newElement.style.cssText = `height: ${this.height}; width: ${this.width};background:${this.bg}; font-size:${this.fontSize}`;
+    body.append(newElement);
   };
 };
-const block = new DomElement(".block", "150px", "250px", "yellow", "24px");
+const block = new DomElement(".div", "150px", "250px", "yellow", "24px");
 block.createElement();
 
 const best = new DomElement("#best", "200px", "550px", "green", "42px");
